@@ -1,6 +1,6 @@
 package PacoteBlackJack;
 
-public class Teste {
+public class ProjetoBlackjack{
     public static void main(String args[]){
         Carta cartaD = new Carta();
         System.out.println("Número: " + cartaD.getNumero());
