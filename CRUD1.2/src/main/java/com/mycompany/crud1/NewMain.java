@@ -1,4 +1,5 @@
 package com.mycompany.crud1;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -24,9 +25,18 @@ public class NewMain {
         System.out.println("Type the name of the new product:");
         String name = reader.nextLine();
         newProduct.setName(name);
-        System.out.println("Now type its price:");
-        double price = reader.nextDouble();
-        newProduct.setPrice(price);              
+        boolean keep = true;
+        while(keep){
+            try{
+                System.out.println("Now type its price:");
+                double price = reader.nextDouble();
+                keep = false;
+                newProduct.setPrice(price);  
+            }catch(InputMismatchException e){
+                System.out.println("Incorrect input. Try again.");
+                reader.next();
+            }          
+        }
         return newProduct;
     }
     
@@ -55,9 +65,18 @@ public class NewMain {
                             listOfProducts.get(i).setName(newname);
                             break;
                         case 'p':
-                            System.out.println("Type the new price of the product \""+listOfProducts.get(i).getName()+"\":");
-                            Double newprice = reader.nextDouble();
-                            listOfProducts.get(i).setPrice(newprice);
+                            boolean keep2 = true;
+                            while(keep2){
+                                try{
+                                    System.out.println("Type the new price of the product \""+listOfProducts.get(i).getName()+"\":");
+                                    double newprice = reader.nextDouble();
+                                    keep2 = false;
+                                    listOfProducts.get(i).setPrice(newprice); 
+                                }catch(InputMismatchException e){
+                                    System.out.println("Incorrect input. Try again.");
+                                    reader.next();  
+                                }
+                            }
                             break;
                     }
                     keep = false;
